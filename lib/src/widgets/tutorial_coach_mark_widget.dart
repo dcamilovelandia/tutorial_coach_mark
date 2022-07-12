@@ -138,8 +138,8 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget> implem
       haloHeight = target.size.height;
     }
 
-    haloWidth = haloWidth * 0.6 + widget.paddingFocus;
-    haloHeight = haloHeight * 0.6 + widget.paddingFocus;
+    haloWidth = 0;
+    haloHeight = 0;
 
     double weight = 0.0;
     double? top;
