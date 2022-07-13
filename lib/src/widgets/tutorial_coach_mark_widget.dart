@@ -28,6 +28,7 @@ class TutorialCoachMarkWidget extends StatefulWidget {
     this.pulseVariation,
     this.pulseEnable = true,
     this.skipWidget,
+    required this.focusLightColor
   })  : assert(targets.length > 0),
         super(key: key);
 
@@ -50,6 +51,7 @@ class TutorialCoachMarkWidget extends StatefulWidget {
   final Tween<double>? pulseVariation;
   final bool pulseEnable;
   final Widget? skipWidget;
+  final Color? focusLightColor;
 
   @override
   TutorialCoachMarkWidgetState createState() => TutorialCoachMarkWidgetState();
@@ -69,6 +71,7 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget> implem
           AnimatedFocusLight(
             key: _focusLightKey,
             targets: widget.targets,
+            focusLightColor: widget.focusLightColor,
             finish: widget.finish,
             paddingFocus: widget.paddingFocus,
             colorShadow: widget.colorShadow,
@@ -138,8 +141,8 @@ class TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget> implem
       haloHeight = target.size.height;
     }
 
-    haloWidth = 0;
-    haloHeight = 0;
+    haloWidth = haloWidth * 0.6 + widget.paddingFocus;
+    haloHeight = haloHeight * 0.6 + widget.paddingFocus;
 
     double weight = 0.0;
     double? top;

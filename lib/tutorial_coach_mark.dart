@@ -32,6 +32,7 @@ class TutorialCoachMark {
   final Duration pulseAnimationDuration;
   final bool pulseEnable;
   final Widget? skipWidget;
+  final Color? focusLightColor;
 
   OverlayEntry? _overlayEntry;
 
@@ -53,7 +54,9 @@ class TutorialCoachMark {
         this.unFocusAnimationDuration = const Duration(milliseconds: 600),
         this.pulseAnimationDuration = const Duration(milliseconds: 500),
         this.pulseEnable = true,
-        this.skipWidget})
+        this.skipWidget,
+        this.focusLightColor
+      })
       : assert(opacityShadow >= 0 && opacityShadow <= 1);
 
   OverlayEntry _buildOverlay() {
@@ -79,6 +82,7 @@ class TutorialCoachMark {
           pulseAnimationDuration: pulseAnimationDuration,
           pulseEnable: pulseEnable,
           finish: finish,
+          focusLightColor: focusLightColor,
         );
       },
     );

@@ -17,6 +17,7 @@ class AnimatedFocusLight extends StatefulWidget {
   final Function? removeFocus;
   final Function()? finish;
   final double paddingFocus;
+  final Color? focusLightColor;
   final Color colorShadow;
   final double opacityShadow;
   final Duration? focusAnimationDuration;
@@ -42,6 +43,7 @@ class AnimatedFocusLight extends StatefulWidget {
     this.pulseAnimationDuration,
     this.pulseVariation,
     this.pulseEnable = true,
+    required this.focusLightColor
   })  : assert(targets.length > 0),
         super(key: key);
 
@@ -211,7 +213,7 @@ class AnimatedStaticFocusLightState extends AnimatedFocusLightState {
                       /// Essential for collecting [TapDownDetails]. Do not make [null]
                       : () {},
                   child: Container(
-                    color: Colors.transparent,
+                    color: widget.focusLightColor ?? Colors.transparent,
                     width: (_targetPosition?.size.width ?? 0) +
                         _getPaddingFocus() * 4,
                     height: (_targetPosition?.size.height ?? 0) +
@@ -368,7 +370,7 @@ class AnimatedPulseFocusLightState extends AnimatedFocusLightState {
                         _tapHandlerForPosition(details);
                       },
                       child: Container(
-                        color: Colors.transparent,
+                        color: widget.focusLightColor ?? Colors.transparent,
                         width: (_targetPosition?.size.width ?? 0) +
                             _getPaddingFocus() * 4,
                         height: (_targetPosition?.size.height ?? 0) +
